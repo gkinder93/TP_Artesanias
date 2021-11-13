@@ -1,0 +1,17 @@
+body {
+	background: #E5E5E5;
+}
+
+.listado {
+  width: 400px;
+  margin: 10px auto 0;
+  text-align: center;
+  
+}
+.listado img {
+  height: 100px;
+  width: 100px;
+}
+
+table { width: 100%; }
+table th, table td { padding: 3px 3px; border-bottom: 1px solid #ccc; }

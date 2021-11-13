@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Generar Publicacion .:. Sintar</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <script src="js/insertarpublicacion.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/consulta.js" type="text/javascript"></script>
+
+  
+  </head>
+  <body>
+
+    <div class="container"> 
+		<h1>Generar Publicacion</h1>
+
+		<div class="row">
+			<!-- Para ocultar todo el formulario -->
+			<div id="ocultarform">
+			<div class="col-md-6 well">
+				<form>
+					<div class="form-group">
+						<p>
+						  <label>Nombre</label> <br>
+						  <input id="nombre" class="form-control" type="text" placeholder="Ingrese Nombre publicacion...">
+						</p>
+
+						<p>
+						  <label>Descripcion</label> <br>
+						   <textarea id="descripcion" class="form-control" name="descripcion" cols="40" placeholder="Ingrese Descripcion del Producto..."></textarea>
+						</p>
+						 
+						<p>
+							<label>Seleccione una Categoria</label> <br>
+							<!-- Combo Categoria --> 
+							<select id="categoria" name="categoria">
+								<option>Clasico</option>
+								<option>Cuero</option>
+								<option>Madera</option>
+								<option>Metal</option>
+								<option>Textil</option>
+								<option>Tradicional</option>
+							</select><br>
+						</p>
+						 <!-- Tipo de Publicacion -->
+						<p>
+							<label>Seleccione el tipo de Publicacion</label><br>
+									
+							<input type="radio" onchange="displayDiv('extra','verprecio','descextra','muestra0','venta1',this)" name="tipos" value="0"  id="muestra">
+							<label for="muestra">Muestra</label>
+							
+							<input type="radio" onchange="displayDiv('extra','verprecio','descextra','muestra0','venta1',this)" name="tipos" value="1" checked="checked" id="venta">
+							<label for="venta">Venta</label>
+						</p>
+						
+						<!--  -->
+						<p id="extra">
+							<label for="extra">Precio Producto</label> <br>
+							<input type="text" class="col-xs-3" name="extra" id="precio" placeholder="Ingrese Precio">
+							
+							<input type="text" class="col-xs-1" name="limite" id="limite" placeholder="5"><label>Publicaciones</label><br>
+							<br>
+							
+							<label>Orden</label><br>
+									
+							<input type="radio" name="ordena" value="2" checked="checked" id="desc">Relevantes</input>
+							<input type="radio" name="ordena" value="1"  id="asc">Ascendente</input>						
+							<input type="radio" name="ordena" value="0" id="desc">Descendente</input>					
+												
+				
+							<button id="consultar" class="btn btn-success" type="button">Consultar Precio</button>			
+							<button id="limpiar"  class="btn btn-success"  type="button" onclick="location.reload()">Limpiar</button>	
+						</p>
+						
+						 
+						<p>
+							<textarea style="display: none" id="descextra" class="form-control" name="descextra" cols="40" placeholder="Ingrese Descripcion Extra..."></textarea>
+							<br>
+							<label>Datos de Contacto</label> <br>					   
+						   <br>				
+							<textarea  id="contacto" class="form-control" name="contacto" cols="40" placeholder="Ingrese Datos de Contacto (Nombre, Telefono, Correo, etc...)"></textarea>
+						</p>
+
+						<p>
+						<label>Seleccione Imagen del Producto</label> <br>
+						<input  type="file" id="archivo" name="files[]" multiple />
+							<output id="list"></output>
+						</p>
+						<br>
+						<button id="agregar" class="btn btn-success" type="button" onclick="mostrartabla('vertabla','ocultarform','volver',1)">Generar Publicacion</button>
+					</div>
+				</form>
+			</div>
+			
+			<div class="col-md-6 well"  id="verprecio">
+				<label> Precios de referencia del producto</label>
+
+				<div class="listado">
+					<!-- Aca muestro la tabla con el resultado de la consulta a la api de mercadolibre -->
+				</div>
+			</div>
+
+			</div>
+
+			<!-- Tabla con la Publicacion recien generada -->
+			<div class="col-md-12 well" id="vertabla" style="display: none">
+				<table  id="mytable" class="table table-bordered table-hover table-sm table-striped">
+				  <tr>
+					<th>Fecha</th>
+					<th>Nombre</th>
+					<th>Descripcion</th>
+					<th style="display: none" id="muestra0">Desc.Extra</th>
+					<th id="venta1">Precio</th>
+					<th>Categoria</th>
+					<th>Imagen</th>
+					<th>Contacto</th>
+					<th>Estado</th>
+					<th>Eliminar</th>
+				  </tr>
+				</table>
+			</div>
+			
+			<div id="volver" style="display: none">
+				<div class="alert alert-primary" role="alert">
+					<h3 class="alert-heading">Su publicacion se ha ingresado correctamente!</h3>
+				</div>
+				<button  class="btn btn-success" type="button" onclick="location.reload()">Volver</button>
+			<!--onclick="mostrartabla('vertabla','ocultarform','volver',2)"-->
+			</div>
+			
+		</div>
+	</div>
+		
+		
+	<!--Scripts para mostrar u ocultar elementos -->
+	<script type="text/javascript">
+		function mostrartabla(id, id2,id3,cond) {
+			if(cond==1){
+				document.getElementById(id).style.display = 'block';
+				document.getElementById(id2).style.display = 'none';
+				document.getElementById(id3).style.display = 'block';
+			}else{
+				if(cond == 2){
+					document.getElementById(id).style.display = 'none';
+					document.getElementById(id2).style.display = 'block';	
+					document.getElementById(id3).style.display = 'none';
+				}
+			}
+		}
+    </script>
+	
+	<script type="text/javascript">
+	  /* --- Para ocultar campo Precio Producto -- */
+		function displayDiv(id1,id2,id3,id4,id5,elementValue) {
+			document.getElementById(id1).style.display = elementValue.value == 1 ? 'block' : 'none';
+			document.getElementById(id2).style.display = elementValue.value == 1 ? 'block' : 'none';
+			document.getElementById(id3).style.display = elementValue.value == 1 ? 'none' : 'block';
+			document.getElementById(id4).style.display = elementValue.value == 0 ? 'block' : 'none';
+			document.getElementById(id5).style.display = elementValue.value == 1 ? 'block' : 'none';
+		}
+	</script>
+	
+  </body>
+</html>
