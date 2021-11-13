@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+   	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/estilos.css">
+    <title>Registro de Usuario</title>
+</head>
+<body>
+    <main>
+	
+        <form action="cuentacreada.html" class="formulario" id="formulario">
+
+			<h1>Registro de Usuario</h1>
+			
+			<label for="grupo_nombre" class="formulario_label" style="font-size: 20px;">Datos de usuario</label>
+            <!--Campo nombre  -->
+            <div class="formulario_grupo" id="grupo_nombre">
+				<label for="usuario" class="formulario_label">Nombre</label>
+				<div class="formulario_grupo-input">
+					<input type="text" class="formulario_input" name="nombre" id="nombre" placeholder="Ingrese su nombre">
+					<i class="formulario_validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario_input-error">El nombre tiene que ser solo letras.</p>
+			</div>
+
+            <!--Campo apellido
+            <div class="formulario_grupo" id="grupo_apellido">
+				<label for="apellido" class="formulario_label">Apellido</label>
+				<div class="formulario_grupo-input">
+					<input type="text" class="formulario_input" name="apellido" id="apellido" placeholder="Ingrese su apellido">
+					<i class="formulario_validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario_input-error">El apellido tiene que ser solo letras.</p>
+			</div>-->
+            
+
+           <!--Campo Telefono-->
+            <div class="formulario_grupo" id="grupo_telefono">
+				<label for="telefono" class="formulario_label">Telefono</label>
+				<div class="formulario_grupo-input">
+					<input type="text" class="formulario_input" name="telefono" id="telefono" placeholder="Ingrese su Telefono">
+					<i class="formulario_validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario_input-error">El Telefono solo puede ser numerico de hasta 15 caracteres.</p>
+			</div>
+
+            <!--Email-->
+            <div class="formulario_grupo" id="grupo_email">
+				<label for="email" class="formulario_label">Email</label>
+				<div class="formulario_grupo-input">
+					<input type="email" class="formulario_input" name="email" id="email" placeholder="Ingrese su email">
+					<i class="formulario_validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario_input-error">El Email debe contener formato xxxx@xxxx.xxx</p>
+			</div>
+
+
+            <!--Contraseña-->
+            <div class="formulario_grupo" id="grupo_contrasenia">
+				<label for="contrasenia" class="formulario_label">Contraseña</label>
+				<div class="formulario_grupo-input">
+					<input type="password" class="formulario_input" name="contrasenia" id="contrasenia" placeholder="Ingrese su contraseña">
+					<i class="formulario_validacion-estado fas fa-times-circle"></i>
+				</div>
+				<p class="formulario_input-error">La contraseña tiene que ser de 8 caracteres alfanumericos y una mayúscula.</p>
+			</div>
+
+
+            <!--Ver CSS-->
+			<div class="formulario_mensaje" id="formulario_mensaje">
+				<p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor completa el formulario correctamente.</p>
+			</div>
+
+			<!-- Tipo de Usuario -->
+			<div class="radio">
+				<h2>Seleccione el tipo de Usuario</h2>
+				
+				<input type="radio" onchange="displayDivDemo('extra', this)" name="tipos" value="1" checked="checked" id="artesano">
+				<label for="artesano">Artesano</label>
+		
+				<input type="radio" onchange="displayDivDemo('extra', this)" name="tipos" value="0" id="artesanot">
+				<label for="artesanot">Artesano con Taller</label>
+			</div>
+					
+
+		
+           <!-- Campo Descripcion Extra -->
+            <div id="extra" class="formulario_oculto">
+				<label for="extra" class="formulario_label">Descripcion Extra</label>
+				<div class="formulario_grupo-input">
+					<input type="text" class="formulario_input" name="extra" id="extra" placeholder="Describa sus intereses">
+					<!--<i class="formulario_validacion-estado fas fa-times-circle"></i>-->
+				</div>
+				<!--<p class="formulario_input-error">El apellido tiene que ser solo letras.</p>-->
+			</div>
+
+
+		
+			<div>
+			<button type="submit" id="registrarse">Crear Cuenta</button>
+
+			<button type="submit" id="volver">Volver</button>
+			</div>
+        </form>
+
+  
+		<!--<script src="js/ocultar.js"></script>-->
+		<script src="js/logicaregistro.js"></script>
+		<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+   </main>
+</body>
+</html>

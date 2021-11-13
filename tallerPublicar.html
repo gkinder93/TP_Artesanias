@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <title>Talleres .:. Sintar</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./css/talleres.css"
+    />
+
+    <link rel="stylesheet" href="js/leaflet/leaflet.css" />
+    
+    <script src="js/leaflet/leaflet.js"></script>
+    <script src="servicio/talleres.js" type="text/javascript"></script>
+    <script src="js/publicarTaller.js" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="js/leaflet/MarkerCluster.css" />
+    <link rel="stylesheet" href="js/leaflet/MarkerCluster.Default.css" />
+    <script src="js/leaflet/leaflet.markercluster-src.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body style="background: #e5e5e5" onload="Inicio();">
+    
+    <div class="container">
+      <h1>Publicar taller</h1>
+      <div class="col-md-6 well" style="zoom:120%">
+        <form>
+          <div class="form-group">
+            <label>Nombre del taller</label>
+              <input id="nombreTaller" class="form-control" type="text" placeholder="Ingrese un nombre..."    />
+            <p>
+              <label>Descripcion</label> <br />
+              <textarea
+                id="descripcion"
+                class="form-control"
+                name="descripcion"
+                cols="40"
+                placeholder="Ingrese Descripcion del taller..."
+              ></textarea>
+            </p>
+
+            <p>
+              <label>Seleccione una categoria</label> <br />
+              <!-- Combo Categoria -->
+              <select id="categoria" name="categoria">
+                <option>Clasico</option>
+                <option>Cuero</option>
+                <option>Madera</option>
+                <option>Metal</option>
+                <option>Textil</option>
+                <option>Tradicional</option>
+              </select>
+              <br />
+            </p>
+            <p>
+              <label>Datos de Contacto</label> <br />
+              <textarea
+                id="contacto"
+                class="form-control"
+                name="contacto"
+                cols="40"
+                placeholder="Ingrese Datos de Contacto (Nombre, Telefono, Correo, etc...)"
+              ></textarea>
+            </p><br />
+            <p>
+              <label>Ubicación del taller</label>
+              <input
+                id="buscarDireccion"
+                class="form-control"
+                type="text"
+                placeholder="Ingrese una dirección..."
+              /><br />
+              <button
+                id="buscar"
+                class="btn btn-success"
+                type="button"
+                onclick="direccionBuscador();"
+              >
+                Buscar
+              </button>
+              <p id="resultado" />
+            </p>
+            <label><input type="checkbox" id="valida" disabled="true"> Dirección normalizada</label><br>
+
+            <button id="publicar" class="btn btn-success" type="button" onclick="publicarTaller();">
+              Generar Publicacion
+              </button>
+          </div>
+        </div>
+      </form>
+      
+      <div class="col-md-6 well" >
+        <div id="mapid"></div>
+      </div>
+    </div>
+    
+  
+  </body>
+</html>
